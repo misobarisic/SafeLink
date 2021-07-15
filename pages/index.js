@@ -1,7 +1,7 @@
 import {useState} from "react"
 
 import {footer, meta} from "../config"
-import {decodeURL, generateURL} from "../utils/urlUtils"
+import {generateURL} from "../utils/urlUtils"
 import Footer from "../components/Footer/Footer";
 import WelcomeComponent from "../components/WelcomeComponent";
 import MainHOC from "../hoc/MainHOC";
@@ -30,15 +30,15 @@ export default function Page() {
             <BasicHeader {...meta}/>
             <MainHOC>
                 <WelcomeComponent/>
-                <Input className="text-center" placeholder="https://github.com" value={value} onChangeHandler={onChange}/>
-                <ButtonWrapper>
+                <Input className="text-center" placeholder="https://github.com" value={value}
+                       onChangeHandler={onChange}/>
+                {value ? <ButtonWrapper>
                     <a onClick={() => alert("URL copied to clipboard")}>
                         <ClipboardButton text="Generate and copy URL"
                                          clipboardData={`${origin}/${generateURL(value)}`}/>
                     </a>
-                </ButtonWrapper>
+                </ButtonWrapper> : ""}
             </MainHOC>
-
             <Footer {...footer}/>
         </BasicWrapper>
     )
