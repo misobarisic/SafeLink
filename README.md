@@ -5,7 +5,7 @@
   </a>
 </p>
 
-[SafePaste](https://misobarisic.com/go/safelink) is an open-source link "shortener"
+[SafeLink](https://misobarisic.com/go/safelink) is an open-source link "shortener"
 
 What makes SafeLink stand out is its lack of a **database**. It is 100% frontend (client side).
 
