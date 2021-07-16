@@ -1,6 +1,12 @@
 import React from 'react';
 import {useRouter} from "next/router";
 import {decodeURL} from "../utils/urlUtils";
+import BasicHeader from "../hoc/BasicHeader";
+import {footer, meta} from "../config";
+import MainHOC from "../hoc/MainHOC";
+import Footer from "../components/Footer/Footer";
+import BasicWrapper from "../hoc/BasicWrapper";
+import HeadingComponent from "../components/HeadingComponent";
 
 export default function Page() {
     try {
@@ -10,25 +16,28 @@ export default function Page() {
         if (typeof window !== "undefined" && decodedValue) {
             window.location.href = decodedValue
         }
-        return redirectComponent()
+        return contentMaker(redirectComponent)
     } catch (e) {
-        return errorComponent()
+        return contentMaker(errorComponent)
     }
 }
 
+function contentMaker(func) {
+    return <BasicWrapper>
+        <BasicHeader {...meta}/>
+        <MainHOC>
+            <HeadingComponent/>
+            {func()}
+        </MainHOC>
+        <Footer {...footer}/>
+    </BasicWrapper>
+}
 const headingClassName = "mt-16 md:mt-24 text-center text-2xl font-semibold"
 function redirectComponent() {
-    return <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <h1 className={headingClassName}>
-            Redirecting
-        </h1>
-    </div>
+    return
+    <h1 className={headingClassName}>Redirecting</h1>
 }
 
 function errorComponent() {
-    return <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <h1 className={headingClassName}>
-            Something went wrong
-        </h1>
-    </div>
+    return <h1 className={headingClassName}>Something went wrong</h1>
 }
