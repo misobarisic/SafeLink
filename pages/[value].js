@@ -34,8 +34,7 @@ function contentMaker(func) {
 }
 const headingClassName = "mt-16 md:mt-24 text-center text-2xl font-semibold"
 function redirectComponent() {
-    return
-    <h1 className={headingClassName}>Redirecting</h1>
+    return <h1 className={headingClassName}>Redirecting</h1>
 }
 
 function errorComponent() {
