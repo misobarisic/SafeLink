@@ -3,13 +3,20 @@ module.exports.meta = {
     icon: "/favicon.ico"
 }
 module.exports.footer = {
-    links: [{
-        text: "Developer",
-        link: "https://misobarisic.com/"
-    }, {
-        text: "Source Code",
-        link: "https://misobarisic.com/go/safelinksource",
-    }]
+    links: [
+        {
+            text: "Developer",
+            link: "https://misobarisic.com/"
+        },
+        {
+            text: "Source Code",
+            link: "https://misobarisic.com/go/safelinksource",
+        },
+        {
+            text: "SafePaste",
+            link: "https://misobarisic.com/go/safepaste",
+        }
+    ]
 }
 module.exports.base = {
     key: "safepaste"
