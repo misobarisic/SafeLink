@@ -21,8 +21,6 @@ export default function Page() {
     const [password, setPassword] = useState("")
     const onChange = (e, setFunc) => {
         const value = e.target.value
-        // const encoded = generateURL(value)
-        // console.log(encoded)
         setFunc(value)
     }
 
