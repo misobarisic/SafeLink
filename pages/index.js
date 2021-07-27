@@ -1,7 +1,7 @@
 import {useState} from "react"
 
 import {footer, meta} from "../config"
-import {generateURL} from "../utils/urlUtils"
+import {generateURL, generateURLwithPass} from "../utils/urlUtils"
 import Footer from "../components/Footer/Footer";
 import WelcomeComponent from "../components/WelcomeComponent";
 import MainHOC from "../hoc/MainHOC";
@@ -18,11 +18,12 @@ export default function Page() {
     }
 
     const [value, setValue] = useState("")
-    const onChange = e => {
+    const [password, setPassword] = useState("")
+    const onChange = (e, setFunc) => {
         const value = e.target.value
-        const encoded = generateURL(value)
-        console.log(encoded)
-        setValue(value)
+        // const encoded = generateURL(value)
+        // console.log(encoded)
+        setFunc(value)
     }
 
     return (
@@ -30,12 +31,14 @@ export default function Page() {
             <BasicHeader {...meta}/>
             <MainHOC>
                 <WelcomeComponent/>
-                <Input className="text-center" placeholder="https://github.com" value={value}
-                       onChangeHandler={onChange}/>
+                <Input className="text-center" placeholder="Link" value={value}
+                       onChangeHandler={e => onChange(e, setValue)}/>
+                <Input className="text-center" placeholder="Password (optional)" value={password}
+                       onChangeHandler={e => onChange(e, setPassword)}/>
                 {value ? <ButtonWrapper>
                     <a onClick={() => alert("URL copied to clipboard")}>
                         <ClipboardButton text="Generate and copy URL"
-                                         clipboardData={`${origin}/${generateURL(value)}`}/>
+                                         clipboardData={`${origin}/${password ? generateURLwithPass(value, password) : generateURL(value)}`}/>
                     </a>
                 </ButtonWrapper> : ""}
             </MainHOC>

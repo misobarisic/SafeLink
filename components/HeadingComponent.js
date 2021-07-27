@@ -3,6 +3,6 @@ export default function HeadingComponent() {
         <a className="text-blue-600 font-bold" href="/">
             SafeLink
         </a>
-        {" Redirect Service"}
+        {" Redirect"}
     </h1>
 }
