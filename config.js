@@ -1,6 +1,7 @@
 module.exports.meta = {
     title: "SafeLink",
-    icon: "/favicon.ico"
+    icon: "/favicon.ico",
+    version: "0.1.1"
 }
 module.exports.footer = {
     links: [
