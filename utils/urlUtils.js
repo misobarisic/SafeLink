@@ -1,6 +1,7 @@
 const aes256 = require("aes256")
 const base64 = require("base-64")
-const {key} = require("../config").base
+const {key, passphrase} = require("../config").base
+
 module.exports.generateURL = input => {
     if (input) {
         if (input.startsWith("https://") || input.startsWith("http://")) {
@@ -12,6 +13,17 @@ module.exports.generateURL = input => {
         return ""
     }
 }
-module.exports.decodeURL = input => {
-    return input ? aes256.decrypt(key, base64.decode(input)) : "";
+module.exports.generateURLwithPass = (input, pass) => {
+    if (input) {
+        if (input.startsWith("https://") || input.startsWith("http://")) {
+            return base64.encode(aes256.encrypt(key, base64.encode(aes256.encrypt(pass, input)) + passphrase))
+        } else if (input.startsWith("http://") || !input.startsWith("https://")) {
+            return base64.encode(aes256.encrypt(key, base64.encode(aes256.encrypt(pass, `https://${input}`)) + passphrase))
+        }
+    } else {
+        return ""
+    }
+}
+module.exports.decodeURL = (input, password) => {
+    return input ? aes256.decrypt(password || key, base64.decode(input)) : "";
 }

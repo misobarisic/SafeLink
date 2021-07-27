@@ -19,5 +19,6 @@ module.exports.footer = {
     ]
 }
 module.exports.base = {
-    key: "safepaste"
+    key: "safepaste",
+    passphrase: "!safepassword"
 }
