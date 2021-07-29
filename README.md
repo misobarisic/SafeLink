@@ -18,14 +18,84 @@ What makes SafeLink stand out is its lack of a **database**. It is 100% frontend
 - [AES256](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) + [Base64](https://en.wikipedia.org/wiki/Base64)
   encoding
 
-
 ## How it works
 
 When you click on "Generate URL", SafeLink generates a link based on your input: `link.misobarisic.com/<your data>`
 
-When you open a link, SafeLink reads and decodes whatever comes after the first `/` upon which you are redirected to their respective destination.
+When you open a link, SafeLink reads and decodes whatever comes after the first `/` upon which you are redirected to
+their respective destination.
 
+## HTTP REST
 
+SafeLink links can be easily created or read with a HTTP GET request:
+
+Make sure to use `x-www-form-urlencoded` to pass data.
+
+The accept header should include `application/json` or `*/*`.
+
+`data` refers to the original (redirect) URL, whereas
+`link` refers to the part of the URL after `link.misobarisic.com/`
+
+### Encode
+
+```javascript
+GET / api / encode
+Body
+should
+contain: data
+
+Example
+response:
+{
+  "data"
+:
+  "https://github.com",
+          "link"
+:
+  "dGhpcyBpcyBhbiBleGFtcGxl"
+} 
+```
+
+### Encode with password
+
+```javascript
+GET / api / encode
+Body
+should
+contain: data, password
+
+// Password is not sent back in the response
+Example
+response:
+{
+  "data"
+:
+  "this is an example",
+          "link"
+:
+  "dGhpcyBpcyBhbiBleGFtcGxl"
+} 
+```
+
+### Decode
+
+```javascript
+GET / api / decode
+Body
+should
+contain: link
+
+Example
+response:
+{
+  "data"
+:
+  "another example",
+          "link"
+:
+  "YW5vdGhlciBleGFtcGxl"
+}
+```
 
 ## Forks
 
