@@ -38,62 +38,41 @@ The accept header should include `application/json` or `*/*`.
 
 ### Encode
 
-```javascript
-GET / api / encode
-Body
-should
-contain: data
+```
+GET /api/encode
+Body should contain: data
 
-Example
-response:
+Example response:
 {
-  "data"
-:
-  "https://github.com",
-          "link"
-:
-  "dGhpcyBpcyBhbiBleGFtcGxl"
+  "data": "https://github.com",
+  "link":"dGhpcyBpcyBhbiBleGFtcGxl"
 } 
 ```
 
 ### Encode with password
 
-```javascript
-GET / api / encode
-Body
-should
-contain: data, password
+```
+GET /api/encode
+Body should contain: data, password
 
 // Password is not sent back in the response
-Example
-response:
+Example response:
 {
-  "data"
-:
-  "this is an example",
-          "link"
-:
-  "dGhpcyBpcyBhbiBleGFtcGxl"
+  "data": "https://github.com",
+  "link": "dGhpcyBpcyBhbiBleGFtcGxl"
 } 
 ```
 
 ### Decode
 
-```javascript
-GET / api / decode
-Body
-should
-contain: link
+```
+GET /api/decode
+Body should contain: link
 
-Example
-response:
+Example response:
 {
-  "data"
-:
-  "another example",
-          "link"
-:
-  "YW5vdGhlciBleGFtcGxl"
+  "data": "https://github.com",
+  "link": "YW5vdGhlciBleGFtcGxl"
 }
 ```
 
