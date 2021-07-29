@@ -27,7 +27,7 @@ their respective destination.
 
 ## HTTP REST
 
-SafePaste links can be easily created or read with a HTTP GET request:
+SafeLink links can be easily created or read with a HTTP GET request:
 
 Make sure to use `x-www-form-urlencoded` to pass data.
 
