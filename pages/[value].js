@@ -26,7 +26,7 @@ export default function Page() {
                 const decode = () => {
                     const decodedWithPass = decodeURL(decodedValue.slice(0, decodedValue.length - base.passphrase.length), password)
                     if (decodedWithPass) {
-                        if (decodedWithPass.startsWith("http//") || decodedWithPass.startsWith("https://")) {
+                        if (decodedWithPass.startsWith("http://") || decodedWithPass.startsWith("https://")) {
                             window.location.href = decodedWithPass
                         } else {
                             setPassword("")
