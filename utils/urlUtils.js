@@ -24,6 +24,12 @@ module.exports.generateURLwithPass = (input, pass) => {
         return ""
     }
 }
-module.exports.decodeURL = (input, password) => {
-    return input ? aes256.decrypt(password || key, base64.decode(input)) : "";
+module.exports.decodeURL = (input, pass) => {
+    if (input) {
+        try {
+            return aes256.decrypt(pass || key, base64.decode(input))
+        } catch (e) {
+            return ""
+        }
+    } else return ""
 }

@@ -1,3 +1,5 @@
+const {base} = require("../../config")
+
 export default function handler(req, res) {
     const {checkAcceptHeader, checkContentType} = require("../../utils/apiUtils")
     if (req.method === 'GET') {
@@ -5,8 +7,9 @@ export default function handler(req, res) {
         if (checkContentType(req, res)) return
 
         const {decodeURL} = require("../../utils/urlUtils")
-        const link = req.body.link
-        const data = decodeURL(link)
+        const {link, pass} = req.body
+        let data = decodeURL(link)
+        if (data.endsWith(base.passphrase) && pass) data = decodeURL(data.slice(0, data.length - base.passphrase.length), pass)
         if (data) {
             res.status(200).json({data, link})
         } else {

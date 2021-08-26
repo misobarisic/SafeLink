@@ -5,9 +5,9 @@ export default function handler(req, res) {
         if (checkContentType(req, res)) return
 
         const {generateURL, generateURLwithPass} = require("../../utils/urlUtils")
-        const {data, password} = req.body
+        const {data, pass} = req.body
         if (data) {
-            const link = password ? generateURLwithPass(data, password) : generateURL(data)
+            const link = pass ? generateURLwithPass(data, pass) : generateURL(data)
             res.status(200).json({data, link})
         } else {
             res.status(400).send(`Make sure to use x-www-form-urlencoded with key "data".`)

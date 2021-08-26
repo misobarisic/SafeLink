@@ -53,7 +53,7 @@ Example response:
 
 ```
 GET /api/encode
-Body should contain: data, password
+Body should contain: data, pass
 
 // Password is not sent back in the response
 Example response:
@@ -69,6 +69,20 @@ Example response:
 GET /api/decode
 Body should contain: link
 
+Example response:
+{
+  "data": "https://github.com",
+  "link": "YW5vdGhlciBleGFtcGxl"
+}
+```
+
+### Decode with password
+
+```
+GET /api/decode
+Body should contain: link, pass
+
+// Password is not sent back in the response
 Example response:
 {
   "data": "https://github.com",
