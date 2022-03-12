@@ -39,7 +39,8 @@ export default function Page() {
                 }
 
                 content = <>
-                    <Input className="text-center" placeholder="Password" value={password}
+                    <Input className="text-center" placeholder="Password" type="password"
+                           value={password}
                            onChangeHandler={changeHandler} onKeyPressHandler={keyPressHandler}/>
                     {password ? <ButtonWrapper>
                         <button

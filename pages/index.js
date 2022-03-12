@@ -31,7 +31,7 @@ export default function Page() {
                 <WelcomeComponent/>
                 <Input className="text-center" placeholder="Link" value={value}
                        onChangeHandler={e => onChange(e, setValue)}/>
-                <Input className="text-center" placeholder="Password (optional)" value={password}
+                <Input className="text-center" placeholder="Password (optional)" type="password" value={password}
                        onChangeHandler={e => onChange(e, setPassword)}/>
                 {value ? <ButtonWrapper>
                     <a onClick={() => alert("URL copied to clipboard")}>
